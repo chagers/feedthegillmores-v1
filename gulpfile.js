@@ -149,6 +149,12 @@ gulp.task('serve:test', ['scripts'], () => {
   gulp.watch('test/spec/**/*.js', ['lint:test']);
 });
 
+// deploy to GitHub Pages
+gulp.task('deploy', ['default'], () => {
+  return gulp.src('dist/**/*')
+    .pipe($.ghPages());
+});
+
 // inject bower components
 gulp.task('wiredep', () => {
   gulp.src('app/*.html')
