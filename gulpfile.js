@@ -15,7 +15,7 @@ gulp.task('views', () => {
   return gulp.src('app/*.pug')
     .pipe($.plumber())
     .pipe($.pug({pretty: true}))
-    .pipe(gulp.dest('.tmp'))
+    .pipe($.if(dev, gulp.dest('.tmp'), gulp.dest('dist')))
     .pipe(reload({stream: true}));
 });
 
