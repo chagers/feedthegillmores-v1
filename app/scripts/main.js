@@ -6,5 +6,8 @@ const client = contentful.createClient({
 });
 
 client.getEntries()
-.then((response) => console.log(response.items))
+.then((response) => {
+  const title = response.items[0].fields.title;
+  console.log(response.items, title);
+})
 .catch(console.error);
