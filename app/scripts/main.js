@@ -1,8 +1,12 @@
 'use strict';
 
+import config from './config.js';
+
+const contentful = require('contentful');
+
 const client = contentful.createClient({
-  space: mySpaceId,
-  accessToken: myAccessToken
+  space: config.mySpaceId,
+  accessToken: config.myAccessToken
 });
 
 client.getEntries()

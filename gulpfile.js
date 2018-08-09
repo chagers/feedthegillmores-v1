@@ -5,6 +5,10 @@ const browserSync = require('browser-sync').create();
 const del = require('del');
 const wiredep = require('wiredep').stream;
 const runSequence = require('run-sequence');
+const browserify = require('browserify');
+const babelify = require('babelify');
+const buffer = require('vinyl-buffer');
+const source = require('vinyl-source-stream');
 
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
@@ -14,9 +18,9 @@ let dev = true;
 gulp.task('views', () => {
   return gulp.src('app/*.pug')
     .pipe($.plumber())
-    .pipe($.pug({pretty: true}))
+    .pipe($.pug({ pretty: true }))
     .pipe($.if(dev, gulp.dest('.tmp'), gulp.dest('dist')))
-    .pipe(reload({stream: true}));
+    .pipe(reload({ stream: true }));
 });
 
 gulp.task('styles', () => {
@@ -28,26 +32,33 @@ gulp.task('styles', () => {
       precision: 10,
       includePaths: ['.']
     }).on('error', $.sass.logError))
-    .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
+    .pipe($.autoprefixer({ browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'] }))
     .pipe($.if(dev, $.sourcemaps.write()))
     .pipe(gulp.dest('.tmp/styles'))
-    .pipe(reload({stream: true}));
+    .pipe(reload({ stream: true }));
 });
 
 gulp.task('scripts', () => {
-  return gulp.src('app/scripts/**/*.js')
+  const b = browserify({
+    entries: 'app/scripts/main.js',
+    transform: babelify,
+    debug: true
+  });
+
+  return b.bundle()
+    .pipe(source('bundle.js'))
     .pipe($.plumber())
-    .pipe($.if(dev, $.sourcemaps.init()))
-    .pipe($.babel())
+    .pipe(buffer())
+    .pipe($.if(dev, $.sourcemaps.init({ loadMaps: true })))
     .pipe($.if(dev, $.sourcemaps.write('.')))
     .pipe(gulp.dest('.tmp/scripts'))
-    .pipe(reload({stream: true}));
+    .pipe(reload({ stream: true }));
 });
 
 function lint(files) {
   return gulp.src(files)
     .pipe($.eslint({ fix: true }))
-    .pipe(reload({stream: true, once: true}))
+    .pipe(reload({ stream: true, once: true }))
     .pipe($.eslint.format())
     .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
 }
@@ -64,13 +75,13 @@ gulp.task('lint:test', () => {
 
 gulp.task('html', ['views', 'styles', 'scripts'], () => {
   return gulp.src(['app/*.html', '.tmp/*.html'])
-    .pipe($.useref({searchPath: ['.tmp', 'app', '.']}))
-    .pipe($.if(/\.js$/, $.uglify({compress: {drop_console: true}})))
-    .pipe($.if(/\.css$/, $.cssnano({safe: true, autoprefixer: false})))
+    .pipe($.useref({ searchPath: ['.tmp', 'app', '.'] }))
+    .pipe($.if(/\.js$/, $.uglify({ compress: { drop_console: true } })))
+    .pipe($.if(/\.css$/, $.cssnano({ safe: true, autoprefixer: false })))
     .pipe($.if(/\.html$/, $.htmlmin({
       collapseWhitespace: true,
       minifyCSS: true,
-      minifyJS: {compress: {drop_console: true}},
+      minifyJS: { compress: { drop_console: true } },
       processConditionalComments: true,
       removeComments: true,
       removeEmptyAttributes: true,
@@ -119,6 +130,7 @@ gulp.task('serve', () => {
 
     gulp.watch([
       'app/*.html',
+      'app/scripts/**/*.js',
       'app/images/**/*',
       '.tmp/fonts/**/*'
     ]).on('change', reload);

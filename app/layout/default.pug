@@ -19,9 +19,6 @@ html.no-js(lang='')
     link(rel='stylesheet', href='styles/main.css')
     // endbuild
 
-    // build:js scripts/vendor/modernizr.js
-    //- script(src='/bower_components/modernizr/modernizr.js')
-    // endbuild
   body
     <!--[if lt IE 10]>
       p.browserupgrade You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
@@ -49,12 +46,9 @@ html.no-js(lang='')
     // endbuild
 
     // build:js scripts/plugins.js
-    //- script(src='/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js')
     // endbuild
 
     // build:js scripts/main.js
-    script(src="scripts/config.js")
-    script(src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js")
-    script(src='scripts/main.js')
+    script(src="scripts/bundle.js")
     // endbuild
 
