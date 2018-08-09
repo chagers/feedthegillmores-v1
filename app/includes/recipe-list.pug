@@ -1,3 +1,5 @@
+include ../mixins/recipe-list-card.pug
+
 .container
-  //- +recipe-list-card(title)
+  +recipe-list-card('this is a different title', 'about 15mins')
   a.btn.btn-primary.add-recipe(href="add-recipe.html") Add Recipe
