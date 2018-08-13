@@ -1,7 +1,6 @@
 'use strict';
 
-import config from './config.js';
-
+const config = require('./config.js');
 const contentful = require('contentful');
 
 const client = contentful.createClient({
@@ -10,8 +9,8 @@ const client = contentful.createClient({
 });
 
 client.getEntries()
-.then((response) => {
-  const title = response.items[0].fields.title;
-  console.log(response.items, title);
-})
-.catch(console.error);
+  .then((response) => {
+    const title = response.items[0].fields.title;
+    console.log(response.items, title);
+  })
+  .catch(console.error);
