@@ -1,5 +1,7 @@
 include ../mixins/recipe-list-card.pug
 
+- const recipes = require('./main.js');
+
 .container
-  +recipe-list-card('this is a different title', 'about 15mins')
+  +recipe-list-card(${recipes.title}, 'about 15mins')
   a.btn.btn-primary.add-recipe(href="add-recipe.html") Add Recipe

@@ -2,15 +2,21 @@
 
 const config = require('./config.js');
 const contentful = require('contentful');
+const pug = require('gulp-pug');
 
 const client = contentful.createClient({
   space: config.mySpaceId,
   accessToken: config.myAccessToken
 });
 
-client.getEntries()
+const recipes = [];
+
+client.getEntries({})
   .then((response) => {
-    const title = response.items[0].fields.title;
-    console.log(response.items, title);
+    for (let i = 0; i < response.items.length; i++) {
+      recipes.push(response.items[i].fields);
+    }
   })
   .catch(console.error);
+
+module.exports = recipes;
