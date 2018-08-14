@@ -15,10 +15,36 @@ const reload = browserSync.reload;
 
 let dev = true;
 
+// pull in Contentful data
+let recipesArray = {};
+gulp.task('content', (contentfulFetch) => {
+  const config = require('./app/scripts/config.js');
+  const contentful = require('contentful');
+  const client = contentful.createClient({
+    space: config.mySpaceId,
+    accessToken: config.myAccessToken
+  });
+
+  client.getEntries({})
+    .then((response) => {
+      recipesArray = response;
+      // for (let i = 0; i < response.items.length; i++) {
+      //   recipesArray += response[i];
+      // }
+      contentfulFetch();
+    })
+    .catch(console.error);
+
+  return recipesArray;
+});
+
+const testy = {a: 'yes', b: 'no'};
+
 gulp.task('views', () => {
+  console.log(recipesArray);
   return gulp.src('app/*.pug')
     .pipe($.plumber())
-    .pipe($.pug({ pretty: true }))
+    .pipe($.pug({ pretty: true, self: true, locals: { recipes: recipesArray } }))
     .pipe($.if(dev, gulp.dest('.tmp'), gulp.dest('dist')))
     .pipe(reload({ stream: true }));
 });
@@ -116,7 +142,7 @@ gulp.task('extras', () => {
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
 gulp.task('serve', () => {
-  runSequence(['clean', 'wiredep'], ['views', 'styles', 'scripts', 'fonts'], () => {
+  runSequence(['clean', 'wiredep'], 'content', ['views', 'styles', 'scripts', 'fonts'], () => {
     browserSync.init({
       notify: false,
       port: 9000,
