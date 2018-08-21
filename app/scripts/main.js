@@ -1,28 +1,11 @@
-// 'use strict';
+'use strict';
 
-// const config = require('./config.js');
-// const contentful = require('contentful');
-// const pug = require('gulp-pug');
+// Helper functions for recipes data
 
-// const client = contentful.createClient({
-//   space: config.mySpaceId,
-//   accessToken: config.myAccessToken
-// });
+const recipesArray = (allRecipes) => {
+  
+};
 
-// const recipes = [];
+module.exports = {
 
-// client.getEntries({})
-//   .then((response) => {
-//     for (let i = 0; i < response.items.length; i++) {
-//       recipes.push(response.items[i].fields);
-//     }
-//     // renderHome();
-//   })
-//   .catch(console.error);
-
-
-
-// const renderHome = () => {
-//   const homeContent = feedthegillmores.layout.default(recipes);
-//   document.getElementById('content').innerHTML = homeContent;
-// }
+}

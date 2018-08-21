@@ -16,7 +16,8 @@ const reload = browserSync.reload;
 let dev = true;
 
 // pull in Contentful data
-let recipesArray = {};
+let allRecipes = {};
+
 gulp.task('content', (contentfulFetch) => {
   const config = require('./app/scripts/config.js');
   const contentful = require('contentful');
@@ -27,24 +28,18 @@ gulp.task('content', (contentfulFetch) => {
 
   client.getEntries({})
     .then((response) => {
-      recipesArray = response;
-      // for (let i = 0; i < response.items.length; i++) {
-      //   recipesArray += response[i];
-      // }
+      allRecipes = response;
       contentfulFetch();
     })
     .catch(console.error);
 
-  return recipesArray;
+  return allRecipes;
 });
 
-const testy = {a: 'yes', b: 'no'};
-
 gulp.task('views', () => {
-  console.log(recipesArray);
   return gulp.src('app/*.pug')
     .pipe($.plumber())
-    .pipe($.pug({ pretty: true, self: true, locals: { recipes: recipesArray } }))
+    .pipe($.pug({ pretty: true, self: true, locals: { recipes: allRecipes } }))
     .pipe($.if(dev, gulp.dest('.tmp'), gulp.dest('dist')))
     .pipe(reload({ stream: true }));
 });
