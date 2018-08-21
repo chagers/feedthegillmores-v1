@@ -1,29 +1,30 @@
 doctype html
-html.no-js(lang='')
+html.no-js(lang="")
   head
-    meta(charset='utf-8')
-    meta(name='description', content='')
-    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(charset="utf-8")
+    meta(name="description", content="")
+    meta(name="viewport", content="width=device-width, initial-scale=1")
     title feed the gillmores
-    link(rel='apple-touch-icon', href='apple-touch-icon.png')
+    link(rel="apple-touch-icon", href="apple-touch-icon.png")
     // Place favicon.ico in the root directory
 
     // build:css styles/vendor.css
-    link(rel="stylesheet", href="/styles/vendor/bootstrap.min.css")
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css")
     link(rel="stylesheet", href="/styles/vendor/raleway.css")
+    link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
     // bower:css
     // endbower
     // endbuild
 
     // build:css styles/main.css
-    link(rel='stylesheet', href='styles/main.css')
+    link(rel="stylesheet", href="styles/main.css")
     // endbuild
 
   body
     <!--[if lt IE 10]>
-      p.browserupgrade You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+      p.browserupgrade You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience."
     <![endif]-->
-    .jumbotron.jumbotron-fluid
+    .header.jumbotron.jumbotron-fluid
       .container
         h1 feed the gillmores
         p.tag-line Keep our recipes in one spot and make life easier for us.
@@ -36,13 +37,14 @@ html.no-js(lang='')
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
       e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='https://www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-XXXXX-X');ga('send','pageview');
+      e.src="https://www.google-analytics.com/analytics.js";
+      r.parentNode.insertBefore(e,r)}(window,document,"script","ga"));
+      ga("create","UA-XXXXX-X");ga("send","pageview");
 
     // build:js scripts/vendor.js
+    script(src="https://cdn.jsdelivr.net/npm/marked/marked.min.js")
     // bower:js
-    script(src='/bower_components/jquery/dist/jquery.js')
+    script(src="/bower_components/jquery/dist/jquery.js")
     // endbower
     // endbuild
 
