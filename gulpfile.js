@@ -55,7 +55,7 @@ gulp.task('styles', () => {
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer({ browsers: ['> 1%', 'last 2 versions', 'Firefox ESR'] }))
     .pipe($.if(dev, $.sourcemaps.write()))
-    .pipe(gulp.dest('.tmp/styles'))
+    .pipe($.if(dev, gulp.dest('.tmp/styles'), gulp.dest('dist/styles')))
     .pipe(reload({ stream: true }));
 });
 
@@ -221,8 +221,10 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app/layouts'));
 });
 
-gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
-  return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
+gulp.task('build', () => {
+  runSequence('content', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
+    return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
+  });
 });
 
 gulp.task('default', () => {
