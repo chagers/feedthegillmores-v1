@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'rostef';
+  src: url("../fonts/rostef-thin-webfont.eot") format("embedded-opentype");
+  src: url("../fonts/rostef-thin-webfont.woff") format("woff"), url("../fonts/rostef-thin-webfont.woff2") format("woff2"), url("../fonts/rostef-thin.ttf") format("truetype"), url("../fonts/rostef-thin-webfont.svg") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
