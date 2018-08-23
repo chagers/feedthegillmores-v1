@@ -194,9 +194,11 @@ gulp.task('serve:test', ['scripts'], () => {
 });
 
 // deploy to GitHub Pages
-gulp.task('deploy', ['default'], () => {
-  return gulp.src('dist/**/*')
-    .pipe($.ghPages());
+gulp.task('deploy', () => {
+  runSequence(['build'], () => {
+    return gulp.src('./dist/**/*')
+      .pipe($.ghPages({force: true}));
+  });
 });
 
 // inject bower components
