@@ -1,5 +1,10 @@
 @import 'variables';
 
-h1 {
-  font-family: 'rostef';
+.header {
+  background-color: $eggplant-header;
+
+  h1 {
+    font-family: 'rostef';
+    font-weight: bold;
+  }
 }

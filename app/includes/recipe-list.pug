@@ -7,16 +7,17 @@ script.
   console.log(recipesArray);
 
 .container
-  each recipe in recipesArray
-    +recipe-list-card(
-      `${recipe.fields.title}`,
-      `${recipe.fields.yield}`,
-      `${recipe.fields.time}`,
-      `${recipe.fields.linkToImage}`,
-      `${recipe.fields.dietFriendly}`,
-      `${recipe.fields.ingredientsLong}`,
-      `${recipe.fields.preparation}`,
-      `${recipe.fields.source}`
-    )
+  .card-columns
+    each recipe in recipesArray
+      +recipe-list-card(
+        `${recipe.fields.title}`,
+        `${recipe.fields.yield}`,
+        `${recipe.fields.time}`,
+        `${recipe.fields.linkToImage}`,
+        `${recipe.fields.dietFriendly}`,
+        `${recipe.fields.ingredientsLong}`,
+        `${recipe.fields.preparation}`,
+        `${recipe.fields.source}`
+      )
   
   a.btn.btn-primary.add-recipe(href="https://app.contentful.com/spaces/52iadmtdcio6/entries?id=HmMbC7ppVWDhBNCI&contentTypeHidden=false&order.fieldId=updatedAt&order.direction=descending&displayedFieldIds=updatedAt&displayedFieldIds=author", target="_blank") Add Recipe to Contentful

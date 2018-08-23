@@ -18,5 +18,7 @@ mixin recipe-list-card(title, yield, time, image, diet, ingredients, preparation
     .card-body
       h2.card-title
         a(src=`${source}`, target="_blank") #{title}
+      h3 Ingredients
       p.ingredients #{ingredients}
+      h3 Preparation
       p.preparation #{preparation}
