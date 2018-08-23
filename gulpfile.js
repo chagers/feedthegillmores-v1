@@ -194,12 +194,15 @@ gulp.task('serve:test', ['scripts'], () => {
 });
 
 // deploy to GitHub Pages
-gulp.task('deploy', () => {
-  runSequence(['build'], () => {
-    return gulp.src('./dist/**/*')
-      .pipe($.ghPages({force: true}));
-  });
-});
+// gulp plugin doesn't work with gulp > 4
+// see package.json deploy script
+
+// gulp.task('deploy', () => {
+//   runSequence(['build'], () => {
+//     return gulp.src('./dist/**/*')
+//       .pipe($.ghPages({force: true}));
+//   });
+// });
 
 // inject bower components
 gulp.task('wiredep', () => {
