@@ -57,5 +57,8 @@
       "ecmaVersion": 6,
       "sourceType": "module"
     }
+  },
+  "scripts": {
+    "deploy": "git subtree push --prefix dist origin gh-pages"
   }
 }
