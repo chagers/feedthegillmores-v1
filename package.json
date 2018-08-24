@@ -58,6 +58,6 @@
     }
   },
   "scripts": {
-    "deploy": "gulp build && git add dist/ && git commit -m Build Files && git subtree push --prefix dist origin gh-pages"
+    "deploy": "gulp build && git add dist/ && git commit -m \"Build Files\" && git subtree push --prefix dist origin gh-pages"
   }
 }
