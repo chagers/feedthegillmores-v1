@@ -1,23 +1,30 @@
-mixin recipe-list-card(title, yield, time, image, diet, ingredients, preparation, source)
+mixin recipe-list-card(title, yields, time, image, diet, ingredients, preparation, source)
   .card
     img.card-img-top(src=`${image}`, alt="recipe title")
-    if diet
-      .card-header
-        | Yield: #{yield}
-        i.material-icons star
-        | Time: #{time}
-        i.material-icons star
-        | Diet Friendly? Yes
-    else
-      .card-header
-        | Yield: #{yield}
-        i.material-icons star
-        | Time: #{time}
-        i.material-icons star
-        | Diet Friendly? No
-    .card-body
+    
+    .card-header.text-center
       h2.card-title
         a(src=`${source}`, target="_blank") #{title}
+      if diet === 'true'
+        span.font-italic Yield:
+        |  #{yields}
+        i.material-icons star
+        span.font-italic Time:
+        |  #{time}
+        i.material-icons star
+        span.font-italic Diet Friendly?
+        |  Yes
+      else
+        span.font-italic Yield:
+        |  #{yields}
+        i.material-icons star
+        span.font-italic Time:
+        |  #{time}
+        i.material-icons star
+        span.font-italic Diet Friendly?
+        |  No
+
+    .card-body
       h3 Ingredients
       p.ingredients #{ingredients}
       h3 Preparation

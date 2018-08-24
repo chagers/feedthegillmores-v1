@@ -5,15 +5,14 @@ html.no-js(lang="")
     meta(name="description", content="")
     meta(name="viewport", content="width=device-width, initial-scale=1")
     title feed the gillmores
+    link(rel="shortcut icon", type="image/x-icon", href="favicon.ico")
     link(rel="apple-touch-icon", href="apple-touch-icon.png")
-    // Place favicon.ico in the root directory
 
     link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css")
     link(rel="stylesheet", href="https://fonts.googleapis.com/icon?family=Material+Icons")
+    
     // build:css styles/vendor.css
     link(rel="stylesheet", href="/styles/vendor/raleway.css")
-    // bower:css
-    // endbower
     // endbuild
 
     // build:css styles/main.css
@@ -24,9 +23,10 @@ html.no-js(lang="")
     <!--[if lt IE 10]>
       p.browserupgrade You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience."
     <![endif]-->
-    .header.jumbotron.jumbotron-fluid
+    .header.navbar.fixed-top
       .container
-        h1 feed the gillmores
+        h1
+          a(href="#") feed the gillmores
         p.tag-line Keep our recipes in one spot and make life easier for us.
 
     block content
