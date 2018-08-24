@@ -19,7 +19,6 @@
     "gulp-cache": "^0.4.2",
     "gulp-cssnano": "^2.0.0",
     "gulp-eslint": "^3.0.0",
-    "gulp-gh-pages": "^0.5.4",
     "gulp-htmlmin": "^3.0.0",
     "gulp-if": "^2.0.2",
     "gulp-imagemin": "^3.0.1",
@@ -59,6 +58,6 @@
     }
   },
   "scripts": {
-    "deploy": "git subtree push --prefix dist origin gh-pages"
+    "deploy": "gulp build && git add dist/ && git commit -m Build Files && git subtree push --prefix dist origin gh-pages"
   }
 }

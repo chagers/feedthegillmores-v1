@@ -193,17 +193,6 @@ gulp.task('serve:test', ['scripts'], () => {
   gulp.watch('test/spec/**/*.js', ['lint:test']);
 });
 
-// deploy to GitHub Pages
-// gulp plugin doesn't work with gulp > 4
-// see package.json deploy script
-
-// gulp.task('deploy', () => {
-//   runSequence(['build'], () => {
-//     return gulp.src('./dist/**/*')
-//       .pipe($.ghPages({force: true}));
-//   });
-// });
-
 // inject bower components
 gulp.task('wiredep', () => {
   gulp.src('app/layouts/*.pug')
