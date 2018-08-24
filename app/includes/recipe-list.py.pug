@@ -1,10 +1,10 @@
-include ../mixins/recipe-list-card.pug
+include ../mixins/recipe-list-card.py.pug
 
 - const recipesArray = locals.recipes.items;
 
-script.
-  const recipesArray = !{JSON.stringify(locals.recipes.items)};
-  console.log(recipesArray);
+//- script.
+//-   const recipesArray = !{JSON.stringify(locals.recipes.items)};
+//-   console.log(recipesArray);
 
 .container
   .card-columns
