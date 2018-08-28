@@ -3,8 +3,7 @@ mixin recipe-list-card(title, yields, time, image, diet, ingredients, preparatio
     img.card-img-top(src=`${image}`, alt="recipe title")
     
     .card-header.text-center
-      h2.card-title
-        a(src=`${source}`, target="_blank") #{title}
+      h2.card-title #{title}
       span.font-italic Yield:
       |  #{yields}
       i.material-icons star
@@ -17,6 +16,7 @@ mixin recipe-list-card(title, yields, time, image, diet, ingredients, preparatio
       else
         span.font-italic Diet Friendly?
         |  No
+      a.ftg-link.text-right(href=`${source}`, target="_blank") source
 
     .card-body
       h3 Ingredients

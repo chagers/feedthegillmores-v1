@@ -4,6 +4,8 @@
   .card-header {
     background-color: $card-header;
     border: 1px solid $card-border;
+    padding-bottom: 2rem;
+    position: relative;
     
     .material-icons {
       color: $eggplant;
