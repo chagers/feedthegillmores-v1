@@ -1,26 +1,20 @@
-mixin recipe-list-card(title, yields, time, image, diet, ingredients, preparation, source)
-  .card
+mixin recipe-list-card(title, yields, time, image, diet, ingredients, preparation, source, recipeId)
+  .card(id=`${recipeId}`)
     img.card-img-top(src=`${image}`, alt="recipe title")
     
     .card-header.text-center
       h2.card-title
         a(src=`${source}`, target="_blank") #{title}
+      span.font-italic Yield:
+      |  #{yields}
+      i.material-icons star
+      span.font-italic Time:
+      |  #{time}
+      i.material-icons star
       if diet === 'true'
-        span.font-italic Yield:
-        |  #{yields}
-        i.material-icons star
-        span.font-italic Time:
-        |  #{time}
-        i.material-icons star
         span.font-italic Diet Friendly?
         |  Yes
       else
-        span.font-italic Yield:
-        |  #{yields}
-        i.material-icons star
-        span.font-italic Time:
-        |  #{time}
-        i.material-icons star
         span.font-italic Diet Friendly?
         |  No
 
