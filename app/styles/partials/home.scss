@@ -1,7 +1,7 @@
 @import 'variables';
 
 .header {
-  background-color: $eggplant-header;
+  background-color: $header;
   height: 135px;
   transition: all 0.2s ease;
 
@@ -21,10 +21,6 @@
     }
   }
 
-  & + .container {
-    padding-top: 150px;
-  }
-
   &.shrink {
     height: 75px;
     transition: all 0.2s ease;
@@ -38,6 +34,16 @@
       font-size: 0.8rem;
       line-height: 0.9;
       margin-bottom: 0;
+    }
+  }
+
+  & + .container {
+    padding-top: 150px;
+
+    .add-recipe {
+      background: $eggplant;
+      color: $background;
+      margin: 2rem auto;
     }
   }
 }

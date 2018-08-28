@@ -2,10 +2,6 @@ include ../mixins/recipe-list-card.py.pug
 
 - const recipesArray = locals.recipes.items;
 
-//- script.
-//-   const recipesArray = !{JSON.stringify(locals.recipes.items)};
-//-   console.log(recipesArray);
-
 .container
   .card-columns
     each recipe in recipesArray
@@ -17,7 +13,12 @@ include ../mixins/recipe-list-card.py.pug
         `${recipe.fields.dietFriendly}`,
         `${recipe.fields.ingredientsLong}`,
         `${recipe.fields.preparation}`,
-        `${recipe.fields.source}`
+        `${recipe.fields.source}`,
+        `${recipe.sys.id}`
       )
   
-  a.btn.btn-primary.add-recipe(href="https://app.contentful.com/spaces/52iadmtdcio6/entries?id=HmMbC7ppVWDhBNCI&contentTypeHidden=false&order.fieldId=updatedAt&order.direction=descending&displayedFieldIds=updatedAt&displayedFieldIds=author", target="_blank") Add Recipe to Contentful
+  a.btn.btn-block.add-recipe(href="https://app.contentful.com/spaces/52iadmtdcio6/entries?id=HmMbC7ppVWDhBNCI&contentTypeHidden=false&order.fieldId=updatedAt&order.direction=descending&displayedFieldIds=updatedAt&displayedFieldIds=author", target="_blank") Add Recipe to Contentful
+
+script.
+  const recipesArray = !{JSON.stringify(locals.recipes.items)};
+  console.log(recipesArray);
