@@ -61,7 +61,7 @@ gulp.task('styles', () => {
 
 gulp.task('scripts', () => {
   const b = browserify({
-    entries: 'app/scripts/main.js',
+    entries: ['app/scripts/main.js', 'app/scripts/recipe-detail.js'],
     transform: babelify,
     debug: true
   });
