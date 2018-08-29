@@ -1,4 +1,4 @@
-include ../mixins/recipe-list-card.py.pug
+include ../mixins/recipe-list-card.pug
 
 - const recipesArray = locals.recipes.items;
 
@@ -19,6 +19,6 @@ include ../mixins/recipe-list-card.py.pug
   
   a.btn.btn-block.add-recipe(href="https://app.contentful.com/spaces/52iadmtdcio6/entries?id=HmMbC7ppVWDhBNCI&contentTypeHidden=false&order.fieldId=updatedAt&order.direction=descending&displayedFieldIds=updatedAt&displayedFieldIds=author", target="_blank") Add Recipe to Contentful
 
-script.
-  const recipesArray = !{JSON.stringify(locals.recipes.items)};
-  console.log(recipesArray);
+//- script.
+//-   const recipesArray = !{JSON.stringify(locals.recipes.items)};
+//-   console.log(recipesArray);

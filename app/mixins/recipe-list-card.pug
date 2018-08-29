@@ -3,7 +3,8 @@ mixin recipe-list-card(title, yields, time, image, diet, ingredients, preparatio
     img.card-img-top(src=`${image}`, alt="recipe title")
     
     .card-header.text-center
-      h2.card-title #{title}
+      h2.card-title
+        a(href=`recipe-detail.html?${recipeId}`) #{title}
       span.font-italic Yield:
       |  #{yields}
       i.material-icons star
